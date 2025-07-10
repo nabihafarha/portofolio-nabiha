@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nabiha Farha Fitriani Zulka Portfolio</title>
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+  
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom styles for the hero section background */
+        .hero-background {
+            background: linear-gradient(180deg, #E0F2FE 0%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/Frame\ 42.png') no-repeat center center; /* Placeholder for cloud-like shape */
+            background-size: contain;
+            opacity: 0.7;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        /* Styles for skill bar */
+        .skill-bar-container {
+            background-color: #E0F2FE;
+            border-radius: 9999px; /* Full rounded */
+            height: 8px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            background-color: #3B82F6;
+            height: 100%;
+            border-radius: 9999px; /* Full rounded */
+        }
+
+        /* Flip card styles */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 350px; /* Fixed height for consistency */
+            perspective: 1000px; /* 3D effect */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            border: 1px solid #DBEAFE; /* border-blue-100 */
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 0.5rem;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.5rem;
+        }
+
+        .flip-card-front {
+            background-color: #EFF6FF; /* bg-blue-50 */
+            color: #1F2937; /* text-gray-900 */
+        }
+
+        .flip-card-back {
+            background-color: #DBEAFE; /* A slightly darker blue for the back */
+            color: #1F2937; /* text-gray-900 */
+            transform: rotateY(180deg);
+            overflow-y: auto; /* Enable scrolling for long content */
+            text-align: left;
+            justify-content: flex-start; /* Align content to the top */
+        }
+
+        .flip-card-back h3 {
+            margin-bottom: 0.5rem;
+        }
+        .flip-card-back p {
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.5;
+        }
+        .flip-card-back .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+            color: #4B5563; /* text-gray-700 */
+        }
+        .flip-card-back .detail-item strong {
+            margin-right: 0.5rem;
+            color: #1F2937; /* text-gray-900 */
+        }
+        .flip-card-back .tag {
+            background-color: #BFDBFE; /* bg-blue-200 */
+            color: #1E40AF; /* text-blue-900 */
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px; /* rounded-full */
+            font-size: 0.75rem; /* text-xs */
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        /* Animation for sections appearing from left/right */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateX(-100px); /* Default for sliding from left */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .animate-on-scroll.slide-right {
+            transform: translateX(100px); /* Override for sliding from right */
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-[#F7F9FC] text-gray-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg- [#AFDDFF] shadow-sm py-4 px-6 md:px-12 flex justify-between items-center fixed top-0 left-0 w-full z-50">
+        <div class="text-lg font-semibold text-gray-900">Nabiha Farha</div>
+        <nav class="space-x-6">
+            <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">About Me</a>
+            <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">My Skills</a>
+            <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">My Projects</a>
+            <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">Contact Me</a>
+        </nav>
+    </header>
+
+    <section class="hero-background pt-32 pb-20 text-center relative overflow-hidden">
+        <div class="hero-content max-w-4xl mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hi, I'm Nabiha Farha Fitriani Zulka</h1>
+            <p class="text-base md:text-lg text-gray-700 mb-8">Passionate about learning UX/UI and turning ideas into simple digital designs</p>
+            <!-- Updated the button to be a link to your CV -->
+            <a href="https://drive.google.com/drive/folders/1TGpY8PXDOjCex-3eoVraq-dVs8jyJVc1" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">View My CV</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 px-6 md:px-12 bg-white">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-12">
+            <div class="md:w-2/3">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">About Me</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Hi! I'm Nabiha Farha Fitriani Zulka, an 8th-semester Information Systems student at UPN Veteran Jakarta University.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    I'm currently learning and exploring UX/UI design through class projects and online courses. I'm keen to continuously improve my skills and excited to join a UX/UI internship where I can gain hands-on experience and contribute to meaningful projects.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">Collaborative</span>
+                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">Problem Solver</span>
+                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">Always Learning</span>
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Education</h3>
+                <p class="text-gray-700 mb-2"><strong>2022 - Present</strong></p>
+                <p class="text-gray-700 mb-4">UPN Veteran Jakarta - Bachelor Degree in Information Systems</p>
+            </div>
+            <div class="md:w-1/3 flex justify-center md:justify-end">
+                <img src="img/profile.png" alt="Nabiha Farha's Profile Picture" class="w-64 h-64 object-cover md:w-80 md:h-80">
+            </div>
+        </div>
+    </section>
+
+    <!-- My Skills Section -->
+    <section id="skills" class="py-16 px-6 md:px-12 bg-blue-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Hard Skills Card -->
+                <div class="bg-white p-8 rounded-lg shadow-md border border-blue-100">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Hard Skills</h3>
+                    <p class="text-gray-600 mb-6">Tools and techniques I use to design and build.</p>
+
+                    <div class="space-y-6">
+                        <!-- Skill Item: Figma -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="figma" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                    Figma
+                                </div>
+                                <span class="text-gray-600 text-sm">90%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <!-- Skill Item: Prototyping -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="layout" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                    Prototyping
+                                </div>
+                                <span class="text-gray-600 text-sm">85%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <!-- Skill Item: Wireframing -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="pencil-ruler" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                    Wireframing
+                                </div>
+                                <span class="text-gray-600 text-sm">80%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <!-- Skill Item: HTML & CSS -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="code" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                    HTML & CSS
+                                </div>
+                                <span class="text-gray-600 text-sm">75%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <!-- Skill Item: Java -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="coffee" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                    Java
+                                </div>
+                                <span class="text-gray-600 text-sm">70%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills Card -->
+                <div class="bg-white p-8 rounded-lg shadow-md border border-blue-100">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Soft Skills</h3>
+                    <p class="text-gray-600 mb-6">Traits that help me work and grow as a designer.</p>
+
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-green-500"></i>
+                            Problem Solving
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-green-500"></i>
+                            Collaboration
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-green-500"></i>
+                            Adaptability
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-green-500"></i>
+                            Time Management
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-green-500"></i>
+                            Willingness to Learn
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-green-500"></i>
+                            Empathy
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Creative Journey / Projects Section -->
+    <section id="projects" class="py-16 px-6 md:px-12 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">My Creative Journey</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project Card 1: LibraryQ -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="img/thumbnail1.png" alt="LibraryQ Project" class="rounded-lg mb-4 w-full h-auto max-w-xs">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">LibraryQ</h3>
+                            <p class="text-gray-700 mb-4">UPNVJ library app - check-in using QR code</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">LibraryQ</h3>
+                            <p class="text-gray-700 mb-4">LibraryQ is a mobile application designed to streamline student attendance and book checking at the UPNVJ library using QR code technology.</p>
+                            <div class="detail-item"><strong>Role:</strong> UI/UX Designer</div>
+                            <div class="detail-item"><strong>Tools:</strong> Figma</div>
+                            <div class="detail-item"><strong>Project Type:</strong> Course Project - Human-Computer Interaction (Semester 2)</div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="tag">QR-CODE ATTENDANCE SYSTEM</span>
+                                <span class="tag">REAL-TIME BOOK RESERVATION</span>
+                                <span class="tag">STUDENT-FRIENDLY USER INTERFACE</span>
+                            </div>
+                            <a href="https://www.figma.com/design/dPf2l6rlNZSx2RydWYOA1G/LibraryQ?node-id=0-1&t=aGKlZzhTKitEQZ7B-1" class="text-blue-600 hover:underline mt-auto">View The Prototype...</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Morav -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="img/morev-1-10.png" alt="Morev Project" class="rounded-lg mb-4 w-full h-auto max-w-xs">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Morev</h3>
+                            <p class="text-gray-700 mb-4">Movie Review Platform with Community Feedback</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Morev</h3>
+                            <p class="text-gray-700 mb-4">Morav is a website where users can explore movie reviews, culture, watching, and contribute their own watching. The platform encourages community discussion and helps users make better viewing decisions through shared experiences.</p>
+                            <div class="detail-item"><strong>Role:</strong> UI/UX Designer & Frontend Developer</div>
+                            <div class="detail-item"><strong>Tools:</strong> Figma, Visual Studio Code</div>
+                            <div class="detail-item"><strong>Project Type:</strong> Course Project - Web Programming (Semester 3)</div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="tag">BROWSE AND SEARCH MOVIE REVIEWS</span>
+                                <span class="tag">READ USER REVIEWS</span>
+                                <span class="tag">SUBMIT YOUR OWN REVIEW</span>
+                            </div>
+                            <a href="https://www.figma.com/design/c4cw2QrjGbhX1gIaa9XUCS/Morev?node-id=0-1&t=AjGgXY8oiPcMdJt0-1" class="text-blue-600 hover:underline mt-auto">View The Prototype...</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: PetPal -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="img/thumbnail3.png" alt="PetPal Project" class="rounded-lg mb-4 w-full h-auto max-w-xs">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">PetPal</h3>
+                            <p class="text-gray-700 mb-4">Community-Based App to Discover Pet-Friendly Places</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">PetPal</h3>
+                            <p class="text-gray-700 mb-4">PetPal is a mobile app that helps pet owners find and share pet-friendly locations such as cafes, parks, and clinics. It also boasts a community of animal lovers, users can review, rate, and recommend pet-friendly spots to make outing with pet easier and more enjoyable.</p>
+                            <div class="detail-item"><strong>Role:</strong> UI/UX Designer</div>
+                            <div class="detail-item"><strong>Tools:</strong> Figma</div>
+                            <div class="detail-item"><strong>Project Type:</strong> Program Kreativitas Mahasiswa (PKM)</div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="tag">LOCATION-BASED SEARCH FOR PET-FRIENDLY SPOTS</span>
+                                <span class="tag">COMMUNITY REVIEWS AND CONTRIBUTIONS</span>
+                                <span class="tag">SIMPLE, INTUITIVE, AND FRIENDLY USER INTERFACE</span>
+                            </div>
+                            <a href="https://www.figma.com/design/Euzo44sJjKONGS7UtlqqQ1/Petpal?node-id=0-1&t=HNxqqGXC55IUnEuA-1" class="text-blue-600 hover:underline mt-auto">View The Prototype...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+         <!-- Contact Me Section -->
+    <section id="contact" class="py-16 px-6 md:px-12 bg-[#F7F9FC]">
+        <div class="max-w-xl mx-auto text-center animate-on-scroll slide-right">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Contact Me</h2>
+            <div class="flex justify-center space-x-6">
+                <a href="mailto:nabihafarha03@gmail" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                    <img src="img/email.png" alt="Email Icon" class="w-8 h-8" onerror="this.onerror=null;this.src='https://placehold.co/32x32/CCCCCC/000000?text=MAIL';"/>
+                </a>
+                <a href="https://www.linkedin.com/in/nabiha-farha-b37936285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                    <img src="img/linkedn.png" alt="LinkedIn Icon" class="w-8 h-8" onerror="this.onerror=null;this.src='https://placehold.co/32x32/CCCCCC/000000?text=LI';"/>
+                </a>
+                <a href="https://www.instagram.com/nabihafarha_?igsh=eHk2emtqOGI0YWpl" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                    <img src="img/instagram.png" alt="Instagram Icon" class="w-8 h-8" onerror="this.onerror=null;this.src='https://placehold.co/32x32/CCCCCC/000000?text=IG';"/>
+                </a>
+                <!-- WhatsApp icon using your custom image -->
+                <a href="https://wa.me/qr/NMETPINDE67PK1" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                    <img src="img/whatsapp.png" alt="WhatsApp Icon" class="w-8 h-8" onerror="this.onerror=null;this.src='https://placehold.co/32x32/CCCCCC/000000?text=WA';"/>
+                </a>
+            </div>
+            <!-- Moved the copyright text inside this centered div -->
+            <p class="mt-8 text-gray-600 text-sm">&copy; 2024 Nabiha Farha. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- Footer is now empty as its content moved to the section above for centering -->
+    <footer>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null, /* viewport */
+            rootMargin: '0px',
+            threshold: 0.1 /* 10% of the element must be visible */
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); /* Stop observing once visible */
+                }
+            });
+        }, observerOptions);
+
+        // Select the content divs within each section to animate
+        const sectionsToAnimate = [
+            document.querySelector('#about .max-w-6xl'),
+            document.querySelector('#skills .max-w-6xl'),
+            document.querySelector('#projects .max-w-6xl'),
+            document.querySelector('#contact .max-w-xl')
+        ];
+
+        sectionsToAnimate.forEach((section, index) => {
+            if (section) {
+                // Add initial animation class based on index (odd/even for left/right)
+                if (index % 2 === 1) { // Skills and Contact sections
+                    section.classList.add('slide-right');
+                }
+                section.classList.add('animate-on-scroll');
+                observer.observe(section);
+            }
+        });
+    </script>
+</body>
+</html>
